@@ -75,6 +75,22 @@ Use case ends.
 
 > 3a1. AddressBook shows an error message <br>
   Use case resumes at step 2
+  
+#### Use case: Rename tag
+
+**MSS**
+
+1. User requests to rename tag
+2. AddressBook prompts for new tag name
+3. User inputs the new tag name 
+4. AddressBook renames the tag, and shows "rename tag successful, [old name] has been renamed [new name]. <br>
+Use case ends.
+
+**Extensions**
+
+1. The tag does not exist
+
+> Use case ends
 
 ## Appendix C : Non Functional Requirements
 
@@ -82,6 +98,7 @@ Use case ends.
 2. Should be able to hold up to 1000 persons.
 3. Should come with automated unit tests and open source code.
 4. Should favor DOS style commands over Unix-style commands.
+5. Should be able to select the file path for storage txt file.
 
 ## Appendix D : Glossary
 
@@ -92,3 +109,13 @@ Use case ends.
 ##### Private contact detail
 
 > A contact detail that is not meant to be shared with others
+
+
+
+
+
+
+
+
+
+
