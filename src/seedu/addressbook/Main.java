@@ -1,7 +1,6 @@
 package seedu.addressbook;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 
 import javafx.stage.Stage;
 import seedu.addressbook.logic.Logic;
@@ -22,13 +21,6 @@ public class Main extends Application implements Stoppable{
     public void start(Stage primaryStage) throws Exception{
         gui = new Gui(new Logic(), VERSION);
         gui.start(primaryStage, this);
-    }
-
-    @Override
-    public void stop() throws Exception {
-        super.stop();
-        Platform.exit();
-        System.exit(0);
     }
 
     public static void main(String[] args) {
