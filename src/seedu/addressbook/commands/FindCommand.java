@@ -19,7 +19,7 @@ public class FindCommand extends Command {
 
     private final Set<String> keywords;
     
-    public boolean modifiesData = false;
+    public static boolean modifiesData = false;
 
     public FindCommand(Set<String> keywords) {
         this.keywords = keywords;

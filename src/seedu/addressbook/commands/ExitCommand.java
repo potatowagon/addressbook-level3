@@ -13,7 +13,7 @@ public class ExitCommand extends Command {
             + "Example: " + COMMAND_WORD;
     public static final String MESSAGE_EXIT_ACKNOWEDGEMENT = "Exiting Address Book as requested ...";
     
-    public boolean modifiesData = false;
+    public static boolean modifiesData = false;
     
     @Override
     public CommandResult execute() {
