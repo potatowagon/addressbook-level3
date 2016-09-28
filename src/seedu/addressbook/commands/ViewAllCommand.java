@@ -18,6 +18,8 @@ public class ViewAllCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_VIEW_PERSON_DETAILS = "Viewing person: %1$s";
+    
+    public boolean modifiesData = false;
 
 
     public ViewAllCommand(int targetVisibleIndex) {
