@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class ListCommand extends Command {
 	
-	public boolean modifiesData = false;
+	public static boolean modifiesData = false;
 
     public static final String COMMAND_WORD = "list";
 

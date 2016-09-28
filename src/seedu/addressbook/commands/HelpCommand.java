@@ -21,7 +21,7 @@ public class HelpCommand extends Command {
             + "\n" + HelpCommand.MESSAGE_USAGE
             + "\n" + ExitCommand.MESSAGE_USAGE;
     
-    public boolean modifiesData = false;
+    public final boolean modifiesData = false;
 
     public HelpCommand() {}
 
