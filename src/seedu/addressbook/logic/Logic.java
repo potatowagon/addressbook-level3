@@ -1,5 +1,6 @@
 package seedu.addressbook.logic;
 
+import seedu.addressbook.commands.Action;
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.CommandResult;
 import seedu.addressbook.data.AddressBook;
@@ -11,6 +12,7 @@ import seedu.addressbook.storage.StorageFile;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.Stack;
 
 /**
  * Represents the main Logic of the AddressBook.
@@ -20,6 +22,7 @@ public class Logic {
 
     private Storage storage;
     private AddressBook addressBook;
+    public static final Stack<AddressBook> stateStack=new Stack<AddressBook>(); //a stack of past address book states
 
     /** The list of person shown to the user most recently.  */
     private List<? extends ReadOnlyPerson> lastShownList = Collections.emptyList();
@@ -85,9 +88,17 @@ public class Logic {
      */
     private CommandResult execute(Command command) throws Exception {
         command.setData(addressBook, lastShownList);
+        if(command.modifiesData){
+        	recordStateBeforeChange(this.addressBook);
+        }
         CommandResult result = command.execute();
         storage.save(addressBook);
         return result;
+    }
+    
+    private void recordStateBeforeChange(AddressBook addressBook){
+    	AddressBook state = new AddressBook(addressBook.getAllPersons(), addressBook.getAllTags());
+    	stateStack.push(state);
     }
 
     /** Updates the {@link #lastShownList} if the result contains a list of Persons. */
