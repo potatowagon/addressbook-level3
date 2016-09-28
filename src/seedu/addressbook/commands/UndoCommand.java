@@ -1,5 +1,7 @@
 package seedu.addressbook.commands;
 
+import seedu.addressbook.logic.Logic;
+
 public class UndoCommand extends Command{
 	 
 	 boolean modifiesData=false;
@@ -11,8 +13,9 @@ public class UndoCommand extends Command{
 
 	@Override
 	public CommandResult execute() {
-		
-		return null;
+		addressBook=Logic.stateStack.pop();
+		Command undoneAction=Logic.modifyingDataCommandHistory.pop();
+		return new CommandResult("Successfully undid previous "+undoneAction.COMMAND_WORD);		
 	}
 
 }

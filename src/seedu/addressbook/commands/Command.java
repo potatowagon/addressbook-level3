@@ -15,7 +15,8 @@ public abstract class Command {
     protected AddressBook addressBook;
     protected List<? extends ReadOnlyPerson> relevantPersons;
     private int targetIndex = -1;
-    public boolean modifiesData; 
+    public boolean modifiesData;
+    public String COMMAND_WORD;
 
     /**
      * @param targetIndex last visible listing index of the target person
