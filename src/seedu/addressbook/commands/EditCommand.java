@@ -16,4 +16,16 @@ public class EditCommand extends Command {
 		return null;
 	}
 
+	@Override
+	public boolean modifiesData() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String getCommandWord() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

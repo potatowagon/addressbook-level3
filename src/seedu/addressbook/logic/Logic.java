@@ -3,6 +3,7 @@ package seedu.addressbook.logic;
 
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.CommandResult;
+import seedu.addressbook.commands.UndoCommand;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.parser.Parser;
@@ -22,6 +23,9 @@ public class Logic {
 
     private Storage storage;
     private AddressBook addressBook;
+    
+    public static Stack <AddressBook> undoneStates = new Stack<AddressBook>();
+    public static Stack<Command> undoneCommands=new Stack<Command>();
     
     public  final static Stack<AddressBook> stateStack=new Stack<AddressBook>();//a stack of past address book states
     public static final Stack<Command> modifyingDataCommandHistory=new Stack<Command>();
@@ -92,6 +96,8 @@ public class Logic {
         command.setData(addressBook, lastShownList);
         if(command.modifiesData()){
         	recordStateBeforeChange(addressBook, command);
+        	undoneCommands=new Stack<Command>();
+        	undoneStates = new Stack<AddressBook>(); 
         }
         CommandResult result = command.execute();
         storage.save(addressBook);

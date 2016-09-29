@@ -1,6 +1,7 @@
 package seedu.addressbook.commands;
 
 import java.util.EmptyStackException;
+import java.util.Stack;
 
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.logic.Logic;
@@ -17,9 +18,12 @@ public class UndoCommand extends Command{
 	@Override
 	public CommandResult execute() {
 		try{
+		Logic.undoneStates.push(new AddressBook(addressBook.getAllPersons(), addressBook.getAllTags()));
 		AddressBook prevState=Logic.stateStack.pop();
 		addressBook.reset(prevState.getAllPersons(), prevState.getAllTags());
 		Command undoneAction=Logic.modifyingDataCommandHistory.pop();
+		Logic.undoneCommands.push(undoneAction);
+		
 		return new CommandResult("Successfully undid previous "+undoneAction.getCommandWord());
 		
 		} catch (EmptyStackException e){
