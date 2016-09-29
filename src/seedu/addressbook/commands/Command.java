@@ -16,7 +16,6 @@ public abstract class Command {
     protected List<? extends ReadOnlyPerson> relevantPersons;
     private int targetIndex = -1;
     public boolean modifiesData;
-    public String COMMAND_WORD;
 
     /**
      * @param targetIndex last visible listing index of the target person
@@ -67,4 +66,9 @@ public abstract class Command {
     public void setTargetIndex(int targetIndex) {
         this.targetIndex = targetIndex;
     }
+    
+    public abstract boolean modifiesData();
+    
+    public abstract String getCommandWord();
+   
 }

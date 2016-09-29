@@ -68,4 +68,16 @@ public class AddCommand extends Command {
         }
     }
 
+	@Override
+	public boolean modifiesData() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public String getCommandWord() {
+		// TODO Auto-generated method stub
+		return COMMAND_WORD;
+	}
+
 }

@@ -22,7 +22,7 @@ public class Logic {
     private StorageFile storage;
     private AddressBook addressBook;
     
-    public static final Stack<AddressBook> stateStack=new Stack<AddressBook>();//a stack of past address book states
+    public  final static Stack<AddressBook> stateStack=new Stack<AddressBook>();//a stack of past address book states
     public static final Stack<Command> modifyingDataCommandHistory=new Stack<Command>();
     
     /** The list of person shown to the user most recently.  */
@@ -89,7 +89,7 @@ public class Logic {
      */
     private CommandResult execute(Command command) throws Exception {
         command.setData(addressBook, lastShownList);
-        if(command.modifiesData){
+        if(command.modifiesData()){
         	recordStateBeforeChange(addressBook, command);
         }
         CommandResult result = command.execute();
@@ -106,7 +106,8 @@ public class Logic {
     	stateStack.push(state);
     	modifyingDataCommandHistory.push(command);
     }
-
+    
+   
     /** Updates the {@link #lastShownList} if the result contains a list of Persons. */
     private void recordResult(CommandResult result) {
         final Optional<List<? extends ReadOnlyPerson>> personList = result.getRelevantPersons();
