@@ -21,4 +21,18 @@ public class ClearCommand extends Command {
         addressBook.clear();
         return new CommandResult(MESSAGE_SUCCESS);
     }
+
+
+	@Override
+	public boolean modifiesData() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+
+	@Override
+	public String getCommandWord() {
+		// TODO Auto-generated method stub
+		return COMMAND_WORD;
+	}
 }

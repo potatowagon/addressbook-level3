@@ -40,4 +40,18 @@ public class DeleteCommand extends Command {
         }
     }
 
+
+	@Override
+	public boolean modifiesData() {
+		
+		return true;
+	}
+
+
+	@Override
+	public String getCommandWord() {
+		// TODO Auto-generated method stub
+		return COMMAND_WORD;
+	}
+
 }

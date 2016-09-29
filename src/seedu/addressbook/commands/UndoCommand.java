@@ -17,15 +17,27 @@ public class UndoCommand extends Command{
 	@Override
 	public CommandResult execute() {
 		try{
-		addressBook=Logic.stateStack.pop();
+		AddressBook prevState=Logic.stateStack.pop();
+		addressBook.reset(prevState.getAllPersons(), prevState.getAllTags());
 		Command undoneAction=Logic.modifyingDataCommandHistory.pop();
-		return new CommandResult("Successfully undid previous "+undoneAction.COMMAND_WORD);
+		return new CommandResult("Successfully undid previous "+undoneAction.getCommandWord());
 		
 		} catch (EmptyStackException e){
 			return new CommandResult("No actions to undo.");
 		}
 		
 				
+	}
+
+	@Override
+	public boolean modifiesData() {
+		
+		return false;
+	}
+
+	@Override
+	public String getCommandWord() {
+		return COMMAND_WORD;
 	}
 
 }
